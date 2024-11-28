@@ -1,0 +1,773 @@
+// Override Boostrap variables
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Carattere');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css?family=Gravitas+One');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico:wght@200;400;600&display=swap");
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+
+body {
+  background: pink;
+  margin: 0;
+}
+
+a {
+  color: #533f03;
+  font-weight: bold;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  &:after,
+  &::before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+.app-container {
+  box-sizing: border-box;
+  .view-container {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    padding: 1rem;
+    .card {
+      padding: 1rem;
+    }
+    .view-routes {
+      height: 100%;
+      > div {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.fullscreen {
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  width: 99% !important;
+  height: calc(100vh - 110px) !important;
+  margin: 5px;
+  z-index: 1000;
+  padding: 5px 25px 50px 25px !important;
+}
+
+/* ==========================================================================
+Browser Upgrade Prompt
+========================================================================== */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+Custom button styles
+========================================================================== */
+
+.icon-button > .btn {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0.5rem;
+  line-height: 1rem;
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* ==========================================================================
+Generic styles
+========================================================================== */
+
+/* Temporary workaround for availity-reactstrap-validation */
+.invalid-feedback {
+  display: inline;
+}
+
+/* other generic styles */
+
+.title {
+  font-size: 1.25em;
+  margin: 1px 10px 1px 10px;
+}
+
+.description {
+  font-size: 0.9em;
+  margin: 1px 10px 1px 10px;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 2px;
+}
+
+.error {
+  color: white;
+  background-color: red;
+}
+
+.break {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.break-word {
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.preserve-space {
+  white-space: pre-wrap;
+}
+
+/* padding helpers */
+
+@mixin pad($size, $side) {
+  @if $size== '' {
+    @if $side== '' {
+      .pad {
+        padding: 10px !important;
+      }
+    } @else {
+      .pad {
+        padding-#{$side}: 10px !important;
+      }
+    }
+  } @else {
+    @if $side== '' {
+      .pad-#{$size} {
+        padding: #{$size}px !important;
+      }
+    } @else {
+      .pad-#{$side}-#{$size} {
+        padding-#{$side}: #{$size}px !important;
+      }
+    }
+  }
+}
+
+@include pad('', '');
+@include pad('2', '');
+@include pad('3', '');
+@include pad('5', '');
+@include pad('10', '');
+@include pad('20', '');
+@include pad('25', '');
+@include pad('30', '');
+@include pad('50', '');
+@include pad('75', '');
+@include pad('100', '');
+@include pad('4', 'top');
+@include pad('5', 'top');
+@include pad('10', 'top');
+@include pad('20', 'top');
+@include pad('25', 'top');
+@include pad('30', 'top');
+@include pad('50', 'top');
+@include pad('75', 'top');
+@include pad('100', 'top');
+@include pad('4', 'bottom');
+@include pad('5', 'bottom');
+@include pad('10', 'bottom');
+@include pad('20', 'bottom');
+@include pad('25', 'bottom');
+@include pad('30', 'bottom');
+@include pad('50', 'bottom');
+@include pad('75', 'bottom');
+@include pad('100', 'bottom');
+@include pad('5', 'right');
+@include pad('10', 'right');
+@include pad('20', 'right');
+@include pad('25', 'right');
+@include pad('30', 'right');
+@include pad('50', 'right');
+@include pad('75', 'right');
+@include pad('100', 'right');
+@include pad('5', 'left');
+@include pad('10', 'left');
+@include pad('20', 'left');
+@include pad('25', 'left');
+@include pad('30', 'left');
+@include pad('50', 'left');
+@include pad('75', 'left');
+@include pad('100', 'left');
+
+@mixin no-padding($side) {
+  @if $side== 'all' {
+    .no-padding {
+      padding: 0 !important;
+    }
+  } @else {
+    .no-padding-#{$side} {
+      padding-#{$side}: 0 !important;
+    }
+  }
+}
+
+@include no-padding('left');
+@include no-padding('right');
+@include no-padding('top');
+@include no-padding('bottom');
+@include no-padding('all');
+
+/* end of padding helpers */
+
+.no-margin {
+  margin: 0px;
+}
+@mixin voffset($size) {
+  @if $size== '' {
+    .voffset {
+      margin-top: 2px !important;
+    }
+  } @else {
+    .voffset-#{$size} {
+      margin-top: #{$size}px !important;
+    }
+  }
+}
+
+@include voffset('');
+@include voffset('5');
+@include voffset('10');
+@include voffset('15');
+@include voffset('30');
+@include voffset('40');
+@include voffset('60');
+@include voffset('80');
+@include voffset('100');
+@include voffset('150');
+
+.readonly {
+  background-color: #eee;
+  opacity: 1;
+}
+
+/* ==========================================================================
+make sure browsers use the pointer cursor for anchors, even with no href
+========================================================================== */
+
+a:hover {
+  cursor: pointer;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+button.anchor-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  align-items: initial;
+  text-align: initial;
+  width: 100%;
+}
+
+a.anchor-btn:hover {
+  text-decoration: none;
+}
+
+/* ==========================================================================
+Metrics and Health styles
+========================================================================== */
+
+#threadDump .popover,
+#healthCheck .popover {
+  top: inherit;
+  display: block;
+  font-size: 10px;
+  max-width: 1024px;
+}
+
+.thread-dump-modal-lock {
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#healthCheck .popover {
+  margin-left: -50px;
+}
+
+.health-details {
+  min-width: 400px;
+}
+
+/* bootstrap 3 input-group 100% width
+http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
+
+.width-min {
+  width: 1% !important;
+}
+
+/* jhipster-needle-scss-add-main JHipster will add new css style */
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+	box-sizing: border-box;
+}
+h1 {
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.countdown-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+}
+
+.countdown-item {
+	color: #111;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  line-height: 25px;
+	margin: 10px;
+  padding-top: 10px;
+	position: relative;
+	width: 60px;
+	height: 60px;
+}
+
+.countdown-item span {
+	color: #333;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.countdown-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: auto;
+  height: auto;
+  transform: scale(1);
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
+.react-slideshow-fadezoom-images-wrap{
+  height: auto !important;
+  align-items: center !important;;
+}
+.react-slideshow-container {
+  height: auto !important;
+  align-items: center !important;;
+}
+
+.vertical-timeline-element-title {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 1280px) {
+  .test1 {
+    width: 60%;
+    height: 60%;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+
+@media only screen and (max-width: 1279px) {
+  .test1 {
+    width: 60%;
+    height: 60%;
+  }
+  
+}
+
+@media only screen and (max-width: 720px) {
+  .test1 {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.center {
+  position: absolute;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.heart {
+  position: fixed;
+  font-size: 18px;
+  top: -1vh;
+  transform: translateY(0);
+  font-weight: 100;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  from {
+     transform: translateY(0vh) translateX(-10vw); 
+  }
+  to {
+     transform: translateY(100vh) translateX(10vw); 
+  }
+} 
+
+div.fade.in.modal {
+  display:flex !important;
+}
+
+.modal-dialog {
+  margin: auto;
+}
+
+#avatar_women {
+  /* This image is 687 wide by 1024 tall, similar to your aspect ratio */
+  background-image: url('../../webapp/content/images/anh_chu_re.jpg');
+  
+  /* make a square container */
+  width: 180px;
+  height: 180px;
+
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+
+  /* center the image vertically and horizontally */
+  background-position: top center;
+
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+}
+#avatar_men {
+  /* This image is 687 wide by 1024 tall, similar to your aspect ratio */
+  background-image: url('../../webapp/content/images/anh_co_dau.jpg');
+  
+  /* make a square container */
+  width: 180px;
+  height: 180px;
+
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+
+  /* center the image vertically and horizontally */
+  background-position: top center;
+
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+}
+
+  /* hear */
+  table {
+    background-color: #ccc;
+    margin: 30px auto;
+  }
+  
+  td {
+    height: 50px;
+    width: 50px;
+  }
+  
+  table tr:nth-child(2) td:nth-child(4),
+  table tr:nth-child(2) td:nth-child(6) {
+    background-color:red;
+    background-image: url('../../webapp/content/images/anh_co_dau.jpg');
+    object-fit: contain;
+  }
+  
+  table tr:nth-child(3) td:nth-child(n+3):nth-last-child(n+3) {
+    background-color:red;
+    object-fit: contain;
+  }
+  
+  table tr:nth-child(4) td:nth-child(n+3):nth-last-child(n+3) {
+    background-color:red;
+    object-fit: contain;
+  }
+  
+  table tr:nth-child(5) td:nth-child(n+4):nth-last-child(n+4) {
+    background-color:red;
+    object-fit: contain;
+  }
+  
+  table tr:nth-child(6) td:nth-child(n+5):nth-last-child(n+5) {
+    background-color:red;
+    object-fit: contain;
+  }
+
+  td img {
+    width: 15%;
+    height: 15%;
+  }
+  
+  
+
+  /* card image */
+  .valentines-day {
+    position: relative;
+    cursor: pointer;
+    text-align-last: center;
+  }
+  
+  .envelope {
+    position: relative;
+    filter: drop-shadow(0 0 25px rgba(0,0,0,.3));
+    text-align-last: center;
+  }
+  
+  .envelope:before {
+    content:"";
+    position: absolute;
+    width:254px;
+    height:254px;
+    background-color: #ff9494;
+    transform: rotate(-45deg);
+    border-radius: 0 15px 0 0;
+    left:-37px;
+    top:-82px;
+    text-align-last: center;
+  }
+  
+  .envelope:after {
+    content:"";
+    position: absolute;
+    background-color: #ff9494;
+    width:360px;
+    height:225px;
+    left:-90px;
+    top:45px;
+    text-align-last: center;
+  }
+  
+  .heart1111 {
+    position: relative;
+    background-color: #e01911;
+    display: inline-block;
+    height: 180px;
+    top:50px;
+    left:0;
+    transform: rotate(-45deg);
+    width:180px;
+    filter: drop-shadow(0 -10px 25px rgba(0,0,0,.3));
+    transition: .5s;
+    text-align-last: center;
+  }
+    
+  .heart1111:before, .heart1111:after {
+    content:"";
+    background-color: #e01911;
+    border-radius:50%;
+    height: 180px;
+    width: 180px;
+    position: absolute;
+    text-align-last: center;
+    }
+    
+  .heart1111:before {
+    top:-100px;
+    text-align-last: center;
+    left:0;}
+    
+  .heart1111:after {
+    text-align-last: center;
+    left:100px;
+    top:0;}
+  
+  .front {
+    position: absolute;
+    width:0;
+    height:0;
+    border-right: 190px solid #fbd2d2;
+    border-top: 113px solid transparent;
+    border-bottom: 113px solid transparent;
+    top:44px;
+    left:80px;
+    z-index:4;
+    text-align-last: center;
+  }
+  
+  .front:before {
+    content:"";
+    position: absolute;
+    width:0;
+    height:0;
+    border-left: 190px solid #fbd2d2;
+    border-top: 113px solid transparent;
+    border-bottom: 113px solid transparent;
+    top:-113px;
+    left:-170px;
+    text-align-last: center;
+  }
+  
+  .front:after {
+    width:0;
+    height:0;
+    position: absolute;
+    content:"";
+    border-bottom: 150px solid #fce7e9;
+    border-right:180px solid transparent;
+    border-left: 180px solid transparent;
+    top:-36px;
+    left:-170px;
+    text-align-last: center;
+  }
+  
+  .text {
+    position: absolute;
+    font-family: arial;
+    letter-spacing:5px;
+    text-align: center;
+    color: white;
+    z-index:2;
+    top:80px;
+    left:15px;
+    transition: .5s;
+    text-align-last: center;
+  }
+  
+  .valentines-day:hover .heart {
+    text-align-last: center;
+    transform: translateY(-50px) rotate(-45deg);
+  }
+  
+  .valentines-day:hover .text {
+    text-align-last: center;
+    transform: translateY(-50px);
+  }
+  
+  .text2 {
+    text-align-last: center;
+    position: absolute;
+    top:275px;
+    color: white;
+    font-family: brush script mt;
+    text-align: center;
+    width:195px;
+    font-size:20px;
+  }
+  
+  // CSS loading
+ 
+.lds-heart,
+.lds-heart div,
+.lds-heart div:after,
+.lds-heart div:before {
+  box-sizing: border-box;
+}
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 28px;
+  left: 28px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: currentColor;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: currentColor;
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.vertical-timeline-element-content  {
+  padding: 0.5em !important;
+}
+
+.vertical-timeline-element-date {
+  padding-left: 0.8em !important;
+  padding-right: 0.8em !important;
+}
+
+.vertical-timeline-element-content p {
+  margin: 0.1em 0 0 !important;
+  line-height: 1.5 !important;
+}
+
+// .audio-wedding {
+//   display: none !important;
+// }
+// audio {
+//   display: none !important;
+// }
